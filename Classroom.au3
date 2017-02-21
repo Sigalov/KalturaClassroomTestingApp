@@ -31,7 +31,6 @@ While 1
    Case $GUI_EVENT_CLOSE
 		 Exit
 	  Case $RunApp
-		 $hFile = FileOpen(@ScriptDir & "\oleg.log", 1)
 		 StartKalturaClassroom()
 	  Case $CloseApp
 		 CloseKalturaClassroom()
@@ -39,7 +38,6 @@ While 1
 		 FlowRecordLoop(GUICtrlRead($txtFlowRecInterval))
 	  Case $btnTest
 		 WriteToLog("TEST")
-
 	  Case $ExitButton
 		 Exit
 	EndSwitch
@@ -102,7 +100,7 @@ Func CloseKalturaClassroom()
 	ProcessClose($iPID)
 	WriteToLog("Classroom session was closed")
 EndFunc
-17/02/21 16:07:45
+
 Func MsgBoxCustom($title, $msg)
    ; Display a message box with a nested variable in its text.
    MsgBox($MB_OK, $title, $msg)
