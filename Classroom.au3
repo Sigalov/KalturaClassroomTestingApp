@@ -7,28 +7,29 @@
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
-#Region ### START Koda GUI section ### Form=C:\Program Files (x86)\AutoIt3\koda_1.7.3.0\Forms\Classroom.kxf
-$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 414, 578, -1, -1)
+#Region ### START Koda GUI section ### Form=c:\users\oleg.sigalov\documents\kaltclassroomtesting\kalturaclassroomtestingapp\form\classroom.kxf
+$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 288, 430, -1, -1)
 GUISetBkColor(0xFFFFFF)
-$RunApp = GUICtrlCreateButton("Start Kaltura Classroom", 42, 104, 161, 41)
-$ExitButton = GUICtrlCreateButton("Exit", 8, 544, 75, 25)
-GUICtrlSetFont(-1, 8, 800, 0, "MS Sans Serif")
-$CloseApp = GUICtrlCreateButton("Close Kaltura Classroom", 210, 104, 161, 41)
-$Pic1 = GUICtrlCreatePic("C:\Program Files (x86)\AutoIt3\koda_1.7.3.0\Forms\logo.jpg", 8, 8, 393, 89)
-$chkStartFlow1 = GUICtrlCreateCheckbox("START", 16, 168, 65, 17)
-$Group1 = GUICtrlCreateGroup("Record Flow:", 16, 192, 297, 281)
-$Label2 = GUICtrlCreateLabel("Click Record", 32, 216, 81, 20)
-$Label3 = GUICtrlCreateLabel("Record Sleep", 32, 240, 88, 20)
-$Label4 = GUICtrlCreateLabel("Click Stop", 32, 264, 64, 20)
-$txtFlowRecInterval = GUICtrlCreateInput("", 152, 232, 121, 24)
-$Label5 = GUICtrlCreateLabel("Wait for title Sleep", 32, 288, 111, 20)
-$txtTitleSleep = GUICtrlCreateInput("", 152, 280, 121, 24)
-$Label6 = GUICtrlCreateLabel("Click On Title Field", 32, 312, 115, 20)
-$Label7 = GUICtrlCreateLabel("Click Save", 32, 336, 68, 20)
-$Label8 = GUICtrlCreateLabel("Sleep after Save", 32, 360, 104, 20)
-$txtSleepAfterSave = GUICtrlCreateInput("", 152, 352, 121, 24)
+$RunApp = GUICtrlCreateButton("Start Kaltura Classroom", 10, 85, 131, 33)
+$ExitButton = GUICtrlCreateButton("Exit", 15, 386, 60, 20)
+GUICtrlSetFont(-1, 7, 800, 0, "MS Sans Serif")
+$CloseApp = GUICtrlCreateButton("Close Kaltura Classroom", 147, 85, 130, 33)
+$Pic1 = GUICtrlCreatePic("C:\Program Files (x86)\AutoIt3\koda_1.7.3.0\Forms\logo.jpg", 7, 7, 271, 72)
+$chkStartFlow1 = GUICtrlCreateCheckbox("START", 13, 137, 53, 13)
+$Group1 = GUICtrlCreateGroup("Record Flow:", 13, 156, 257, 188)
+$Label2 = GUICtrlCreateLabel("Click Record", 26, 176, 65, 17)
+$Label3 = GUICtrlCreateLabel("Record Sleep", 26, 195, 69, 17)
+$Label4 = GUICtrlCreateLabel("Click Stop", 26, 215, 52, 17)
+$txtFlowRecInterval = GUICtrlCreateInput("", 124, 189, 98, 21)
+$Label5 = GUICtrlCreateLabel("Wait for title Sleep", 26, 234, 90, 17)
+$txtTitleSleep = GUICtrlCreateInput("", 124, 228, 98, 21)
+$Label6 = GUICtrlCreateLabel("Click On Title Field", 26, 254, 92, 17)
+$Label7 = GUICtrlCreateLabel("Click Save", 26, 273, 55, 17)
+$Label8 = GUICtrlCreateLabel("Sleep after Save", 26, 293, 83, 17)
+$txtSleepAfterSave = GUICtrlCreateInput("", 124, 286, 98, 21)
+$chkDeleteAfterRec = GUICtrlCreateCheckbox("Delete Recordings after save", 26, 312, 193, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$btnTest = GUICtrlCreateLabel("", 344, 536, 60, 36)
+$btnTest = GUICtrlCreateLabel("", 212, 372, 52, 36)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
@@ -39,24 +40,28 @@ While 1
    $nMsg = GUIGetMsg()
    Switch $nMsg
    Case $GUI_EVENT_CLOSE
-		 Exit
+		Exit
 	  Case $RunApp
-		 StartKalturaClassroom()
+		StartKalturaClassroom()
 	  Case $CloseApp
-		 CloseKalturaClassroom()
+		CloseKalturaClassroom()
 	  Case $chkStartFlow1
-		 FlowRecordLoop(GUICtrlRead($txtFlowRecInterval))
-	  Case $btnTest
-		 WriteToLog("TEST")
+		FlowRecordLoop(GUICtrlRead($txtFlowRecInterval))
+	   Case $btnTest
+		DeleteRecording()
+		WriteToLog("TEST")
 	  Case $ExitButton
-		 Exit
+		Exit
 	EndSwitch
 WEnd
 
 Func StartKalturaClassroom()
-   $iPID = Run('C:\Program Files\Kaltura\Classroom\CaptureApp\KalturaClassroom.exe', 'C:\Program Files\Kaltura\Classroom\CaptureApp\')
-   Sleep(7000)
-   WriteToLog("Classroom session was started")
+	DeletePersistencyFile();Work around - remove it after fix
+	$iPID = Run('C:\Program Files\Kaltura\Classroom\CaptureApp\KalturaClassroom.exe', 'C:\Program Files\Kaltura\Classroom\CaptureApp\')
+	Sleep(5000)
+	;Close the developers tools
+
+	WriteToLog("Classroom session was started")
 EndFunc
 
 Func FlowRecordLoop($recordTime)
@@ -74,6 +79,7 @@ Func FlowRecord($recordTime)
    ClickRecord()
    Sleep($recordTime + 1000)
    ClickStop()
+   DeletePersistencyFile();Work around - remove it after fix
    Sleep(GUICtrlRead($txtTitleSleep))
    ClickOnTitleField()
    SetFileName()
@@ -131,6 +137,13 @@ EndFunc
 Func DeletePersistencyFile()
    Local $sFilePath = "C:\Program Files\Kaltura\Classroom\Settings\persistency.json"
    DeleteFile($sFilePath)
+EndFunc
+
+Func DeleteRecording()
+	If _IsChecked($chkDeleteAfterRec) Then
+		Local $sFilePath = "C:\Program Files\Kaltura\Classroom\Recordings\"
+		DeleteFile($sFilePath)
+	EndIf
 EndFunc
 
 Func DeleteFile($sFilePath)
