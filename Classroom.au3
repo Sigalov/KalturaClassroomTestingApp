@@ -71,7 +71,7 @@ Func FlowRecordLoop($recordTime)
 	  Else
 		 ExitLoop
 	  EndIf
-	  Sleep(GUICtrlRead($txtSleepAfterSave))
+	  ;Sleep(GUICtrlRead($txtSleepAfterSave))
    WEnd
 EndFunc
 
@@ -84,6 +84,8 @@ Func FlowRecord($recordTime)
    ClickOnTitleField()
    SetFileName()
    ClickSave()
+   Sleep(GUICtrlRead($txtSleepAfterSave))
+   DeleteRecording()
 EndFunc
 
 Func ClickRecord()
