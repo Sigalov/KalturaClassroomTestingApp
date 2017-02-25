@@ -3,77 +3,227 @@
 #include <AutoItConstants.au3>
 #include <MsgBoxConstants.au3>
 #include <ButtonConstants.au3>
+#include <ComboConstants.au3>
 #include <EditConstants.au3>
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
-#Region ### START Koda GUI section ### Form=c:\users\oleg.sigalov\documents\kaltclassroomtesting\kalturaclassroomtestingapp\form\classroom.kxf
-$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 288, 430, -1, -1)
+#Region ### START Koda GUI section ### Form=C:\work\KalturaClassroomTestingApp\Form\Classroom.kxf
+$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 360, 706, -1, -1)
 GUISetBkColor(0xFFFFFF)
-$RunApp = GUICtrlCreateButton("Start Kaltura Classroom", 10, 85, 131, 33)
-$ExitButton = GUICtrlCreateButton("Exit", 15, 386, 60, 20)
-GUICtrlSetFont(-1, 7, 800, 0, "MS Sans Serif")
-$CloseApp = GUICtrlCreateButton("Close Kaltura Classroom", 147, 85, 130, 33)
-$Pic1 = GUICtrlCreatePic("C:\Program Files (x86)\AutoIt3\koda_1.7.3.0\Forms\logo.jpg", 7, 7, 271, 72)
-$chkStartFlow1 = GUICtrlCreateCheckbox("START", 13, 137, 53, 13)
-$Group1 = GUICtrlCreateGroup("Record Flow:", 13, 156, 257, 188)
-$Label2 = GUICtrlCreateLabel("Click Record", 26, 176, 65, 17)
-$Label3 = GUICtrlCreateLabel("Record Sleep", 26, 195, 69, 17)
-$Label4 = GUICtrlCreateLabel("Click Stop", 26, 215, 52, 17)
-$txtFlowRecInterval = GUICtrlCreateInput("", 124, 189, 98, 21)
-$Label5 = GUICtrlCreateLabel("Wait for title Sleep", 26, 234, 90, 17)
-$txtTitleSleep = GUICtrlCreateInput("", 124, 228, 98, 21)
-$Label6 = GUICtrlCreateLabel("Click On Title Field", 26, 254, 92, 17)
-$Label7 = GUICtrlCreateLabel("Click Save", 26, 273, 55, 17)
-$Label8 = GUICtrlCreateLabel("Sleep after Save", 26, 293, 83, 17)
-$txtSleepAfterSave = GUICtrlCreateInput("", 124, 286, 98, 21)
-$chkDeleteAfterRec = GUICtrlCreateCheckbox("Delete Recordings after save", 26, 312, 193, 17)
+$RunApp = GUICtrlCreateButton("Start Kaltura Classroom", 12, 105, 162, 40)
+$ExitButton = GUICtrlCreateButton("Exit", 16, 667, 74, 25)
+GUICtrlSetFont(-1, 9, 800, 0, "MS Sans Serif")
+$CloseApp = GUICtrlCreateButton("Close Kaltura Classroom", 181, 105, 160, 40)
+$Pic1 = GUICtrlCreatePic("C:\Program Files (x86)\AutoIt3\koda_1.7.3.0\Forms\logo.jpg", 9, 9, 333, 88)
+$Group2 = GUICtrlCreateGroup("Generic Flow", 16, 184, 321, 473)
+$cmbAction1 = GUICtrlCreateCombo("", 32, 264, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction2 = GUICtrlCreateCombo("", 32, 296, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay1 = GUICtrlCreateInput("", 184, 264, 121, 24)
+$txtActionDelay2 = GUICtrlCreateInput("", 184, 296, 121, 24)
+$cmbAction3 = GUICtrlCreateCombo("", 32, 328, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay3 = GUICtrlCreateInput("", 184, 328, 121, 24)
+$cmbAction4 = GUICtrlCreateCombo("", 32, 360, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay4 = GUICtrlCreateInput("", 184, 360, 121, 24)
+$cmbAction5 = GUICtrlCreateCombo("", 32, 392, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay5 = GUICtrlCreateInput("", 184, 392, 121, 24)
+$cmbAction6 = GUICtrlCreateCombo("", 32, 424, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay6 = GUICtrlCreateInput("", 184, 424, 121, 24)
+$cmbAction7 = GUICtrlCreateCombo("", 32, 456, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction8 = GUICtrlCreateCombo("", 32, 488, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction9 = GUICtrlCreateCombo("", 32, 520, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction10 = GUICtrlCreateCombo("", 32, 552, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction11 = GUICtrlCreateCombo("", 32, 584, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay7 = GUICtrlCreateInput("", 184, 456, 121, 24)
+$txtActionDelay8 = GUICtrlCreateInput("", 184, 488, 121, 24)
+$txtActionDelay9 = GUICtrlCreateInput("", 184, 520, 121, 24)
+$txtActionDelay10 = GUICtrlCreateInput("", 184, 552, 121, 24)
+$txtActionDelay11 = GUICtrlCreateInput("", 184, 584, 121, 24)
+$chkDeleteAfterRec = GUICtrlCreateCheckbox("Delete Recordings after save", 33, 623, 238, 21)
+$Label1 = GUICtrlCreateLabel("Action:", 32, 232, 44, 20)
+$Label2 = GUICtrlCreateLabel("Delay:", 184, 232, 43, 20)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$btnTest = GUICtrlCreateLabel("", 212, 372, 52, 36)
+$chkStartGeneric = GUICtrlCreateCheckbox("START/STOP Generic Flow", 16, 157, 201, 16)
+$btnTest = GUICtrlCreateButton(".", 312, 667, 27, 25)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
+;Create actions
+GUICtrlSetData($cmbAction1, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction2, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction3, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction4, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction5, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction6, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction7, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction8, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction9, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction10, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
+GUICtrlSetData($cmbAction11, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
 
 Global $iPID = ""
-
+Global $iMax=11
+Global $arrActions[$iMax][2]
+Opt("SendKeyDelay", 1)
 While 1
    $nMsg = GUIGetMsg()
    Switch $nMsg
-   Case $GUI_EVENT_CLOSE
+	  Case $GUI_EVENT_CLOSE
 		Exit
 	  Case $RunApp
 		StartKalturaClassroom()
 	  Case $CloseApp
 		CloseKalturaClassroom()
-	  Case $chkStartFlow1
-		FlowRecordLoop(GUICtrlRead($txtFlowRecInterval))
-	   Case $btnTest
-		DeleteRecording()
-		WriteToLog("TEST")
+	  Case $chkStartGeneric
+		FlowRecordLoop()
+	 Case $btnTest
+		CreateGenericActionsArray()
 	  Case $ExitButton
 		Exit
-	EndSwitch
+   EndSwitch
 WEnd
 
 Func StartKalturaClassroom()
-	DeletePersistencyFile();Work around - remove it after fix
-	$iPID = Run('C:\Program Files\Kaltura\Classroom\CaptureApp\KalturaClassroom.exe', 'C:\Program Files\Kaltura\Classroom\CaptureApp\')
-	Sleep(5000)
-	;Close the developers tools
-
-	WriteToLog("Classroom session was started")
+   DeletePersistencyFile();Work around - remove it after fix
+   $iPID = Run('C:\Program Files\Kaltura\Classroom\CaptureApp\KalturaClassroom.exe', 'C:\Program Files\Kaltura\Classroom\CaptureApp\')
+   Sleep(5000)
+   ;Close the developers tools
+   ;Focus on windows - click on the top
+   MsgBoxCustom("Wait...", "Please focus on the window after launching the flow")
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 242, 39)
+   WriteToLog("Classroom session was started")
 EndFunc
 
-Func FlowRecordLoop($recordTime)
+Func FlowRecordLoop()
    While 1
-	  If _IsChecked($chkStartFlow1) Then
-		 FlowRecord($recordTime)
+	  If _IsChecked($chkStartGeneric) Then
+		 CreateGenericActionsArray()
 	  Else
 		 ExitLoop
 	  EndIf
-	  ;Sleep(GUICtrlRead($txtSleepAfterSave))
    WEnd
 EndFunc
+
+Func CreateGenericActionsArray()
+   Global $arrActions[$iMax][2] = [ [GUICtrlRead($cmbAction1), GUICtrlRead($txtActionDelay1)], _
+									[GUICtrlRead($cmbAction2), GUICtrlRead($txtActionDelay2)], _
+									[GUICtrlRead($cmbAction3), GUICtrlRead($txtActionDelay3)], _
+									[GUICtrlRead($cmbAction4), GUICtrlRead($txtActionDelay4)], _
+									[GUICtrlRead($cmbAction5), GUICtrlRead($txtActionDelay5)], _
+									[GUICtrlRead($cmbAction6), GUICtrlRead($txtActionDelay6)], _
+									[GUICtrlRead($cmbAction7), GUICtrlRead($txtActionDelay7)], _
+									[GUICtrlRead($cmbAction8), GUICtrlRead($txtActionDelay8)], _
+									[GUICtrlRead($cmbAction9), GUICtrlRead($txtActionDelay9)], _
+									[GUICtrlRead($cmbAction10), GUICtrlRead($txtActionDelay10)], _
+									[GUICtrlRead($cmbAction11), GUICtrlRead($txtActionDelay11)] _
+								  ]
+   For $i = 0 to UBound($arrActions) - 1
+	  If $arrActions[$i][0] <> "Select Action" Then
+		 ClickGeneric($arrActions[$i][0])
+	  Endif
+	  If $arrActions[$i][1] <> "" Then
+		 Sleep($arrActions[$i][1])
+	  Endif
+   Next
+EndFunc
+
+Func ClickGeneric($ClickType)
+   Switch $ClickType
+	  Case "Click Record"
+		 ClickRecord()
+	  Case "Click Pause"
+		 ClickPause()
+	  Case "Click Stop"
+		 ClickStop()
+	  Case "Click Abort - X"
+		 ClickX()
+	  Case "Click Save"
+		 ClickSave()
+	  Case "Enter Title"
+		 ClickOnTitleField()
+		 Sleep(1000)
+		 SetFileName("Title")
+	  Case "Enter Username"
+		 ClickOnUsername()
+		 Sleep(1000)
+		 SetFileName("Username")
+	  Case "Enter Description"
+		 ClickOnDescription()
+		 Sleep(1000)
+		 SetFileName("Description")
+	  Case "Enter Tags"
+ 		 ClickOnTags()
+		 Sleep(1000)
+		 SetFileName("Tags")
+	  Case "Click Cancel"
+		 ClickCancel()
+	  Case "Click Yes"
+		 ClickYes()
+	  Case "Click No"
+		 ClickNo()
+   EndSwitch
+EndFunc
+
+Func ClickRecord()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 543, 250)
+   WriteToLog("Clicked on RECORD")
+EndFunc
+
+Func ClickStop()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 384, 259)
+   WriteToLog("Clicked on STOP")
+EndFunc
+
+Func ClickOnTitleField()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 181, 225)
+   WriteToLog("Clicked on the TITLE filed - focus on")
+EndFunc
+
+Func ClickOnUsername()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 181, 338)
+   WriteToLog("Clicked on the USERNAME filed - focus on")
+EndFunc
+
+Func ClickOnDescription()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 181, 442)
+   WriteToLog("Clicked on the DESCRIPTION filed - focus on")
+EndFunc
+
+Func ClickOnTags()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 181, 555)
+   WriteToLog("Clicked on the TAGS filed - focus on")
+EndFunc
+
+Func ClickSave()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 934, 137)
+   WriteToLog("Clicked on SAVE")
+EndFunc
+
+Func ClickPause()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 543, 250)
+   WriteToLog("Clicked on PAUSE")
+EndFunc
+
+Func ClickX()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 704, 247)
+   WriteToLog("Clicked on X - Abort")
+EndFunc
+
+Func ClickCancel()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 832, 137)
+   WriteToLog("Clicked on Cancel")
+EndFunc
+
+Func ClickYes()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 483, 317)
+   WriteToLog("Clicked on Yes")
+EndFunc
+
+Func ClickNo()
+   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 586, 317)
+   WriteToLog("Clicked on No")
+EndFunc
+
 
 Func FlowRecord($recordTime)
    ClickRecord()
@@ -82,36 +232,17 @@ Func FlowRecord($recordTime)
    DeletePersistencyFile();Work around - remove it after fix
    Sleep(GUICtrlRead($txtTitleSleep))
    ClickOnTitleField()
-   SetFileName()
+   SetFileName("Title ")
    ClickSave()
    Sleep(GUICtrlRead($txtSleepAfterSave))
    DeleteRecording()
 EndFunc
 
-Func ClickRecord()
-	ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 543, 250)
-	WriteToLog("Clicked on RECORD")
-EndFunc
 
-Func ClickStop()
-	ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 384, 259)
-	WriteToLog("Clicked on STOP")
-EndFunc
-
-Func ClickOnTitleField()
-	ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 181, 225)
-	WriteToLog("Clicked on the TITLE filed - focus on")
-EndFunc
-
-Func ClickSave()
-	ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 934, 137)
-	WriteToLog("Clicked on SAVE")
-EndFunc
-
-Func SetFileName()
+Func SetFileName($prefix)
    $NOW = _NowCalc()
-   $logname = $NOW
-   Send($NOW)
+   $logname = $prefix & "-" & $NOW
+   Send($logname)
    WriteToLog("Text entered: " & String($logname))
 EndFunc
 
