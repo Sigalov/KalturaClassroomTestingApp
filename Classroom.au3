@@ -224,21 +224,6 @@ Func ClickNo()
    WriteToLog("Clicked on No")
 EndFunc
 
-
-Func FlowRecord($recordTime)
-   ClickRecord()
-   Sleep($recordTime + 1000)
-   ClickStop()
-   DeletePersistencyFile();Work around - remove it after fix
-   Sleep(GUICtrlRead($txtTitleSleep))
-   ClickOnTitleField()
-   SetFileName("Title ")
-   ClickSave()
-   Sleep(GUICtrlRead($txtSleepAfterSave))
-   DeleteRecording()
-EndFunc
-
-
 Func SetFileName($prefix)
    $NOW = _NowCalc()
    $logname = $prefix & "-" & $NOW
