@@ -64,6 +64,8 @@ GUICtrlSetData($cmbAction11, "Select Action|Click Record|Click Pause|Click Stop|
 Global $iPID = ""
 Global $iMax=11
 Global $arrActions[$iMax][2]
+Global $mainWindowName = "Classroom Capture - "
+
 Opt("SendKeyDelay", 1)
 While 1
    $nMsg = GUIGetMsg()
@@ -90,7 +92,7 @@ Func StartKalturaClassroom()
    ;Close the developers tools
    ;Focus on windows - click on the top
    MsgBoxCustom("Wait...", "Please focus on the window after launching the flow")
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 242, 39)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 242, 39)
    WriteToLog("Classroom session was started")
 EndFunc
 
@@ -165,62 +167,62 @@ Func ClickGeneric($ClickType)
 EndFunc
 
 Func ClickRecord()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 543, 250)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 543, 250)
    WriteToLog("Clicked on RECORD")
 EndFunc
 
 Func ClickStop()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 384, 259)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 384, 259)
    WriteToLog("Clicked on STOP")
 EndFunc
 
 Func ClickOnTitleField()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 181, 225)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 181, 225)
    WriteToLog("Clicked on the TITLE filed - focus on")
 EndFunc
 
 Func ClickOnUsername()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 181, 338)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 181, 338)
    WriteToLog("Clicked on the USERNAME filed - focus on")
 EndFunc
 
 Func ClickOnDescription()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 181, 442)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 181, 442)
    WriteToLog("Clicked on the DESCRIPTION filed - focus on")
 EndFunc
 
 Func ClickOnTags()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 181, 555)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 181, 555)
    WriteToLog("Clicked on the TAGS filed - focus on")
 EndFunc
 
 Func ClickSave()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 934, 137)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 934, 137)
    WriteToLog("Clicked on SAVE")
 EndFunc
 
 Func ClickPause()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 543, 250)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 543, 250)
    WriteToLog("Clicked on PAUSE")
 EndFunc
 
 Func ClickX()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 704, 247)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 704, 247)
    WriteToLog("Clicked on X - Abort")
 EndFunc
 
 Func ClickCancel()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 832, 137)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 832, 137)
    WriteToLog("Clicked on Cancel")
 EndFunc
 
 Func ClickYes()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 483, 317)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 483, 317)
    WriteToLog("Clicked on Yes")
 EndFunc
 
 Func ClickNo()
-   ControlClick("Classroom Capture - IL-IGORS-RND", "Chrome Legacy Window", "", "left", 1, 586, 317)
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 586, 317)
    WriteToLog("Clicked on No")
 EndFunc
 
