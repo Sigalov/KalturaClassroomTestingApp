@@ -124,7 +124,7 @@ Func CreateGenericActionsArray()
 		 ClickGeneric($arrActions[$i][0])
 	  Endif
 	  If $arrActions[$i][1] <> "" Then
-		 Sleep($arrActions[$i][1])
+		 Sleep($arrActions[$i][1] * 1000 + 1000)
 	  Endif
    Next
 EndFunc
