@@ -8,14 +8,14 @@
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
-#Region ### START Koda GUI section ### Form=C:\work\KalturaClassroomTestingApp\Form\Classroom.kxf
+#Region ### START Koda GUI section ### Form=c:\work\kalturaclassroomtestingapp\form\classroom.kxf
 $Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 360, 706, -1, -1)
 GUISetBkColor(0xFFFFFF)
 $RunApp = GUICtrlCreateButton("Start Kaltura Classroom", 12, 105, 162, 40)
 $ExitButton = GUICtrlCreateButton("Exit", 16, 667, 74, 25)
 GUICtrlSetFont(-1, 9, 800, 0, "MS Sans Serif")
 $CloseApp = GUICtrlCreateButton("Close Kaltura Classroom", 181, 105, 160, 40)
-$Pic1 = GUICtrlCreatePic("C:\Program Files (x86)\AutoIt3\koda_1.7.3.0\Forms\logo.jpg", 9, 9, 333, 88)
+$Pic1 = GUICtrlCreatePic("C:\work\KalturaClassroomTestingApp\Form\logo.jpg", 9, 9, 333, 88)
 $Group2 = GUICtrlCreateGroup("Generic Flow", 16, 184, 321, 473)
 $cmbAction1 = GUICtrlCreateCombo("", 32, 264, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
 $cmbAction2 = GUICtrlCreateCombo("", 32, 296, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
