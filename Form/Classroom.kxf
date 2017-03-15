@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <object type="TAForm" name="Form1_1">
 	<properties>
-		<property name="Left" vt="Int16">299</property>
-		<property name="Top" vt="Int8">62</property>
+		<property name="Left" vt="Int16">634</property>
+		<property name="Top" vt="Int8">36</property>
 		<property name="Width" vt="Int16">375</property>
-		<property name="Height" vt="Int16">743</property>
+		<property name="Height" vt="Int16">799</property>
 		<property name="Caption" vt="String">Kaltura Classroom QA Automation Testing Tool</property>
 		<property name="Color" vt="Ident">clBtnHighlight</property>
 		<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
@@ -50,7 +50,7 @@
 		<object type="TAButton" name="ExitButton">
 			<properties>
 				<property name="Left" vt="Int8">16</property>
-				<property name="Top" vt="Int16">667</property>
+				<property name="Top" vt="Int16">723</property>
 				<property name="Width" vt="Int8">74</property>
 				<property name="Height" vt="Int8">25</property>
 				<property name="Caption" vt="String">Exit</property>
@@ -101,7 +101,7 @@
 		<object type="TAGroup" name="Group2">
 			<properties>
 				<property name="Left" vt="Int8">16</property>
-				<property name="Top" vt="Int16">184</property>
+				<property name="Top" vt="Int16">216</property>
 				<property name="Width" vt="Int16">321</property>
 				<property name="Height" vt="Int16">473</property>
 				<property name="CtrlStyle" vt="Int32">1342308359</property>
@@ -474,7 +474,7 @@
 		<object type="TAButton" name="btnTest">
 			<properties>
 				<property name="Left" vt="Int16">312</property>
-				<property name="Top" vt="Int16">667</property>
+				<property name="Top" vt="Int16">723</property>
 				<property name="Width" vt="Int8">27</property>
 				<property name="Height" vt="Int8">25</property>
 				<property name="Caption" vt="String">.</property>
@@ -483,6 +483,20 @@
 				<property name="CtrlStyle" vt="Int32">1342373888</property>
 				<property name="CtrlExStyle" vt="Int8">0</property>
 				<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TACheckbox" name="chkStartAfterCrash">
+			<properties>
+				<property name="Left" vt="Int8">16</property>
+				<property name="Top" vt="Int16">184</property>
+				<property name="Width" vt="Int16">185</property>
+				<property name="Height" vt="Int8">17</property>
+				<property name="Caption" vt="String">Resume After Crash</property>
+				<property name="TabOrder" vt="Int8">7</property>
+				<property name="CtrlStyle" vt="Int32">1342242819</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set">DockHeight</property>
 			</properties>
 			<components/>
 		</object>
