@@ -8,43 +8,44 @@
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
-#Region ### START Koda GUI section ### Form=c:\work\kalturaclassroomtestingapp\form\classroom.kxf
-$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 360, 706, -1, -1)
+#Region ### START Koda GUI section ### Form=C:\work\KalturaClassroomTestingApp\Form\Classroom.kxf
+$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 360, 762, -1, -1)
 GUISetBkColor(0xFFFFFF)
 $RunApp = GUICtrlCreateButton("Start Kaltura Classroom", 12, 105, 162, 40)
-$ExitButton = GUICtrlCreateButton("Exit", 16, 667, 74, 25)
+$ExitButton = GUICtrlCreateButton("Exit", 16, 723, 74, 25)
 GUICtrlSetFont(-1, 9, 800, 0, "MS Sans Serif")
 $CloseApp = GUICtrlCreateButton("Close Kaltura Classroom", 181, 105, 160, 40)
-$Pic1 = GUICtrlCreatePic("C:\work\KalturaClassroomTestingApp\Form\logo.jpg", 9, 9, 333, 88)
-$Group2 = GUICtrlCreateGroup("Generic Flow", 16, 184, 321, 473)
-$cmbAction1 = GUICtrlCreateCombo("", 32, 264, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction2 = GUICtrlCreateCombo("", 32, 296, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay1 = GUICtrlCreateInput("", 184, 264, 121, 24)
-$txtActionDelay2 = GUICtrlCreateInput("", 184, 296, 121, 24)
-$cmbAction3 = GUICtrlCreateCombo("", 32, 328, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay3 = GUICtrlCreateInput("", 184, 328, 121, 24)
-$cmbAction4 = GUICtrlCreateCombo("", 32, 360, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay4 = GUICtrlCreateInput("", 184, 360, 121, 24)
-$cmbAction5 = GUICtrlCreateCombo("", 32, 392, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay5 = GUICtrlCreateInput("", 184, 392, 121, 24)
-$cmbAction6 = GUICtrlCreateCombo("", 32, 424, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay6 = GUICtrlCreateInput("", 184, 424, 121, 24)
-$cmbAction7 = GUICtrlCreateCombo("", 32, 456, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction8 = GUICtrlCreateCombo("", 32, 488, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction9 = GUICtrlCreateCombo("", 32, 520, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction10 = GUICtrlCreateCombo("", 32, 552, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction11 = GUICtrlCreateCombo("", 32, 584, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay7 = GUICtrlCreateInput("", 184, 456, 121, 24)
-$txtActionDelay8 = GUICtrlCreateInput("", 184, 488, 121, 24)
-$txtActionDelay9 = GUICtrlCreateInput("", 184, 520, 121, 24)
-$txtActionDelay10 = GUICtrlCreateInput("", 184, 552, 121, 24)
-$txtActionDelay11 = GUICtrlCreateInput("", 184, 584, 121, 24)
-$chkDeleteAfterRec = GUICtrlCreateCheckbox("Delete Recordings after save", 33, 623, 238, 21)
-$Label1 = GUICtrlCreateLabel("Action:", 32, 232, 44, 20)
-$Label2 = GUICtrlCreateLabel("Delay:", 184, 232, 43, 20)
+$Pic1 = GUICtrlCreatePic("C:\Program Files (x86)\AutoIt3\koda_1.7.3.0\Forms\logo.jpg", 9, 9, 333, 88)
+$Group2 = GUICtrlCreateGroup("Generic Flow", 16, 216, 321, 473)
+$cmbAction1 = GUICtrlCreateCombo("", 32, 296, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction2 = GUICtrlCreateCombo("", 32, 328, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay1 = GUICtrlCreateInput("", 184, 296, 121, 24)
+$txtActionDelay2 = GUICtrlCreateInput("", 184, 328, 121, 24)
+$cmbAction3 = GUICtrlCreateCombo("", 32, 360, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay3 = GUICtrlCreateInput("", 184, 360, 121, 24)
+$cmbAction4 = GUICtrlCreateCombo("", 32, 392, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay4 = GUICtrlCreateInput("", 184, 392, 121, 24)
+$cmbAction5 = GUICtrlCreateCombo("", 32, 424, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay5 = GUICtrlCreateInput("", 184, 424, 121, 24)
+$cmbAction6 = GUICtrlCreateCombo("", 32, 456, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay6 = GUICtrlCreateInput("", 184, 456, 121, 24)
+$cmbAction7 = GUICtrlCreateCombo("", 32, 488, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction8 = GUICtrlCreateCombo("", 32, 520, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction9 = GUICtrlCreateCombo("", 32, 552, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction10 = GUICtrlCreateCombo("", 32, 584, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction11 = GUICtrlCreateCombo("", 32, 616, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay7 = GUICtrlCreateInput("", 184, 488, 121, 24)
+$txtActionDelay8 = GUICtrlCreateInput("", 184, 520, 121, 24)
+$txtActionDelay9 = GUICtrlCreateInput("", 184, 552, 121, 24)
+$txtActionDelay10 = GUICtrlCreateInput("", 184, 584, 121, 24)
+$txtActionDelay11 = GUICtrlCreateInput("", 184, 616, 121, 24)
+$chkDeleteAfterRec = GUICtrlCreateCheckbox("Delete Recordings after save", 33, 655, 238, 21)
+$Label1 = GUICtrlCreateLabel("Action:", 32, 264, 44, 20)
+$Label2 = GUICtrlCreateLabel("Delay:", 184, 264, 43, 20)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 $chkStartGeneric = GUICtrlCreateCheckbox("START/STOP Generic Flow", 16, 157, 201, 16)
-$btnTest = GUICtrlCreateButton(".", 312, 667, 27, 25)
+$btnTest = GUICtrlCreateButton(".", 312, 723, 27, 25)
+$chkStartAfterCrash = GUICtrlCreateCheckbox("Resume After Crash", 16, 184, 185, 17)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
@@ -65,6 +66,7 @@ Global $iPID = ""
 Global $iMax=11
 Global $arrActions[$iMax][2]
 Global $mainWindowName = "Classroom Capture - "
+Global $KalturaKlassroomProcessName = "KalturaClassroom.exe"
 
 Opt("SendKeyDelay", 1)
 While 1
@@ -73,28 +75,48 @@ While 1
 	  Case $GUI_EVENT_CLOSE
 		Exit
 	  Case $RunApp
-		StartKalturaClassroom()
+		StartKalturaClassroom(True)
 	  Case $CloseApp
 		CloseKalturaClassroom()
 	  Case $chkStartGeneric
 		FlowRecordLoop()
 	 Case $btnTest
-		CreateGenericActionsArray()
+		RunAppIfNotRunning()
+		;testme()
 	  Case $ExitButton
 		Exit
    EndSwitch
 WEnd
 
-Func StartKalturaClassroom()
+Func testme()
+   If NOT ProcessExists("KalturaClassroom.exe") Then
+	  MsgBoxCustom("Wait...", "Kaltura Klassroom Application is NOT running ")
+   Else
+	  MsgBoxCustom("Wait...", "Kaltura Klassroom Application is running ")
+   Endif
+EndFunc
+
+Func StartKalturaClassroom($isPopMsg)
    DeletePersistencyFile();Work around - remove it after fix
    $iPID = Run('C:\Program Files\Kaltura\Classroom\CaptureApp\KalturaClassroom.exe', 'C:\Program Files\Kaltura\Classroom\CaptureApp\')
-   Sleep(5000)
+   ProcessWait($KalturaKlassroomProcessName)
+   Sleep(10000)
    ;Close the developers tools
    ;Focus on windows - click on the top
-   MsgBoxCustom("Wait...", "Please focus on the window after launching the flow")
    ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 242, 39)
    WriteToLog("Classroom session was started")
+   If $isPopMsg Then
+	  MsgBoxCustom("Wait...", "Please focus on the window after launching the flow")
+   EndIf
 EndFunc
+
+Func RunAppIfNotRunning()
+   If NOT processexists($KalturaKlassroomProcessName) Then
+	  WriteToLog("CRASHED: Kaltura Klassroom Application not running")
+	  WriteToLog("Going to start Kaltura Klassroom Application")
+	  StartKalturaClassroom(False)
+   Endif
+Endfunc
 
 Func FlowRecordLoop()
    While 1
@@ -119,6 +141,7 @@ Func CreateGenericActionsArray()
 									[GUICtrlRead($cmbAction10), GUICtrlRead($txtActionDelay10)], _
 									[GUICtrlRead($cmbAction11), GUICtrlRead($txtActionDelay11)] _
 								  ]
+   WriteToLog("Going to Start the flow")
    For $i = 0 to UBound($arrActions) - 1
 	  If $arrActions[$i][0] <> "Select Action" Then
 		 ClickGeneric($arrActions[$i][0])
@@ -126,7 +149,12 @@ Func CreateGenericActionsArray()
 	  If $arrActions[$i][1] <> "" Then
 		 Sleep($arrActions[$i][1] * 1000 + 1000)
 	  Endif
+	  ; Check if App crashed
+	  If _IsChecked($chkStartAfterCrash) Then
+		 RunAppIfNotRunning()
+	  EndIf
    Next
+   WriteToLog("Flow Cycle ENDED")
 EndFunc
 
 Func ClickGeneric($ClickType)
@@ -255,7 +283,7 @@ EndFunc
 
 ; Temp workaround 21/2/2017 18:47
 Func DeletePersistencyFile()
-   Local $sFilePath = "C:\Program Files\Kaltura\Classroom\Settings\persistency.json"
+   Local $sFilePath = "C:\Program Files\Kaltura\Classroom\Settings\appPersistency.json"
    DeleteFile($sFilePath)
 EndFunc
 
