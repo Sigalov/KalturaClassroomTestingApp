@@ -81,19 +81,26 @@ While 1
 	  Case $chkStartGeneric
 		FlowRecordLoop()
 	 Case $btnTest
-		RunAppIfNotRunning()
-		;testme()
+;~ 		RunAppIfNotRunning()
+		testme()
 	  Case $ExitButton
 		Exit
    EndSwitch
 WEnd
 
 Func testme()
-   If NOT ProcessExists("KalturaClassroom.exe") Then
-	  MsgBoxCustom("Wait...", "Kaltura Klassroom Application is NOT running ")
-   Else
-	  MsgBoxCustom("Wait...", "Kaltura Klassroom Application is running ")
-   Endif
+;~    SetObjectBkColorToDefault($cmbAction1)
+;~    GUICtrlSetBkColor($cmbAction1, 0xFFFFFF)
+;~    GUICtrlSetState($cmbAction1, $GUI_HIDE)
+;~    GUICtrlSetState($cmbAction1, $GUI_SHOW)
+
+;~    GUICtrlSetColor($cmbAction1, 0xA6CAF0)
+;~    GUICtrlSetBkColor(-1, 0xA6CAF0)
+;~    If NOT ProcessExists("KalturaClassroom.exe") Then
+;~ 	  MsgBoxCustom("Wait...", "Kaltura Klassroom Application is NOT running ")
+;~    Else
+;~ 	  MsgBoxCustom("Wait...", "Kaltura Klassroom Application is running ")
+;~    Endif
 EndFunc
 
 Func StartKalturaClassroom($isPopMsg)
@@ -144,15 +151,21 @@ Func CreateGenericActionsArray()
    WriteToLog("Going to Start the flow")
    For $i = 0 to UBound($arrActions) - 1
 	  If $arrActions[$i][0] <> "Select Action" Then
+		 $comboNameStr = "$cmbAction" & $i + 1
+		 Eval(SetObjectBkColorToBlue(Execute($comboNameStr)))
 		 ClickGeneric($arrActions[$i][0])
 	  Endif
 	  If $arrActions[$i][1] <> "" Then
+		 $txtBoxNameStr = "$txtActionDelay" & $i + 1
+		 Eval(SetObjectBkColorToBlue(Execute($txtBoxNameStr)))
 		 Sleep($arrActions[$i][1] * 1000 + 1000)
 	  Endif
 	  ; Check if App crashed
 	  If _IsChecked($chkStartAfterCrash) Then
 		 RunAppIfNotRunning()
 	  EndIf
+	  Eval(SetObjectBkColorToDefault(Execute($comboNameStr)))
+	  Eval(SetObjectBkColorToDefault(Execute($txtBoxNameStr)))
    Next
    WriteToLog("Flow Cycle ENDED")
 EndFunc
@@ -305,3 +318,16 @@ Func DeleteFile($sFilePath)
 	 WriteToLog("An error occurred whilst deleting the file: " & $sFilePath)
   EndIf
 EndFunc
+
+Func SetObjectBkColorToBlue($objectId)
+   GUICtrlSetBkColor($objectId, 0xA6CAF0)
+   GUICtrlSetState($objectId, $GUI_HIDE)
+   GUICtrlSetState($objectId, $GUI_SHOW)
+EndFunc
+
+Func SetObjectBkColorToDefault($objectId)
+   GUICtrlSetBkColor($objectId, 0xFFFFFF)
+   GUICtrlSetState($objectId, $GUI_HIDE)
+   GUICtrlSetState($objectId, $GUI_SHOW)
+EndFunc
+
