@@ -9,43 +9,48 @@
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
 #Region ### START Koda GUI section ### Form=C:\work\KalturaClassroomTestingApp\Form\Classroom.kxf
-$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 360, 762, -1, -1)
+$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 355, 748, -1, -1)
+$menuFile = GUICtrlCreateMenu("File")
+$menuImport = GUICtrlCreateMenuItem("Import Scenario", $menuFile)
+$menuExport = GUICtrlCreateMenuItem("Export Scenario", $menuFile)
+$menuExit = GUICtrlCreateMenuItem("Exit", $menuFile)
+GUISetIcon(".\Form\app.ico", -1)
 GUISetBkColor(0xFFFFFF)
-$RunApp = GUICtrlCreateButton("Start Kaltura Classroom", 12, 105, 162, 40)
-$ExitButton = GUICtrlCreateButton("Exit", 16, 723, 74, 25)
+$RunApp = GUICtrlCreateButton("Start Kaltura Classroom", 12, 97, 162, 40)
+$ExitButton = GUICtrlCreateButton("Exit", 16, 691, 74, 25)
 GUICtrlSetFont(-1, 9, 800, 0, "MS Sans Serif")
-$CloseApp = GUICtrlCreateButton("Close Kaltura Classroom", 181, 105, 160, 40)
-$Pic1 = GUICtrlCreatePic("C:\Program Files (x86)\AutoIt3\koda_1.7.3.0\Forms\logo.jpg", 9, 9, 333, 88)
-$Group2 = GUICtrlCreateGroup("Generic Flow", 16, 216, 321, 473)
-$cmbAction1 = GUICtrlCreateCombo("", 32, 296, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction2 = GUICtrlCreateCombo("", 32, 328, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay1 = GUICtrlCreateInput("", 184, 296, 121, 24)
-$txtActionDelay2 = GUICtrlCreateInput("", 184, 328, 121, 24)
-$cmbAction3 = GUICtrlCreateCombo("", 32, 360, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay3 = GUICtrlCreateInput("", 184, 360, 121, 24)
-$cmbAction4 = GUICtrlCreateCombo("", 32, 392, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay4 = GUICtrlCreateInput("", 184, 392, 121, 24)
-$cmbAction5 = GUICtrlCreateCombo("", 32, 424, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay5 = GUICtrlCreateInput("", 184, 424, 121, 24)
-$cmbAction6 = GUICtrlCreateCombo("", 32, 456, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay6 = GUICtrlCreateInput("", 184, 456, 121, 24)
-$cmbAction7 = GUICtrlCreateCombo("", 32, 488, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction8 = GUICtrlCreateCombo("", 32, 520, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction9 = GUICtrlCreateCombo("", 32, 552, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction10 = GUICtrlCreateCombo("", 32, 584, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$cmbAction11 = GUICtrlCreateCombo("", 32, 616, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
-$txtActionDelay7 = GUICtrlCreateInput("", 184, 488, 121, 24)
-$txtActionDelay8 = GUICtrlCreateInput("", 184, 520, 121, 24)
-$txtActionDelay9 = GUICtrlCreateInput("", 184, 552, 121, 24)
-$txtActionDelay10 = GUICtrlCreateInput("", 184, 584, 121, 24)
-$txtActionDelay11 = GUICtrlCreateInput("", 184, 616, 121, 24)
-$chkDeleteAfterRec = GUICtrlCreateCheckbox("Delete Recordings after save", 33, 655, 238, 21)
-$Label1 = GUICtrlCreateLabel("Action:", 32, 264, 44, 20)
-$Label2 = GUICtrlCreateLabel("Delay:", 184, 264, 43, 20)
+$CloseApp = GUICtrlCreateButton("Close Kaltura Classroom", 189, 97, 160, 40)
+$Pic1 = GUICtrlCreatePic(".\Form\logo.jpg", 9, 1, 333, 88)
+$Group2 = GUICtrlCreateGroup("Generic Flow", 16, 200, 321, 473)
+$cmbAction1 = GUICtrlCreateCombo("", 32, 280, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction2 = GUICtrlCreateCombo("", 32, 312, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay1 = GUICtrlCreateInput("", 184, 280, 121, 24)
+$txtActionDelay2 = GUICtrlCreateInput("", 184, 312, 121, 24)
+$cmbAction3 = GUICtrlCreateCombo("", 32, 344, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay3 = GUICtrlCreateInput("", 184, 344, 121, 24)
+$cmbAction4 = GUICtrlCreateCombo("", 32, 376, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay4 = GUICtrlCreateInput("", 184, 376, 121, 24)
+$cmbAction5 = GUICtrlCreateCombo("", 32, 408, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay5 = GUICtrlCreateInput("", 184, 408, 121, 24)
+$cmbAction6 = GUICtrlCreateCombo("", 32, 440, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay6 = GUICtrlCreateInput("", 184, 440, 121, 24)
+$cmbAction7 = GUICtrlCreateCombo("", 32, 472, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction8 = GUICtrlCreateCombo("", 32, 504, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction9 = GUICtrlCreateCombo("", 32, 536, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction10 = GUICtrlCreateCombo("", 32, 568, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$cmbAction11 = GUICtrlCreateCombo("", 32, 600, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$txtActionDelay7 = GUICtrlCreateInput("", 184, 472, 121, 24)
+$txtActionDelay8 = GUICtrlCreateInput("", 184, 504, 121, 24)
+$txtActionDelay9 = GUICtrlCreateInput("", 184, 536, 121, 24)
+$txtActionDelay10 = GUICtrlCreateInput("", 184, 568, 121, 24)
+$txtActionDelay11 = GUICtrlCreateInput("", 184, 600, 121, 24)
+$chkDeleteAfterRec = GUICtrlCreateCheckbox("Delete Recordings after save", 33, 639, 238, 21)
+$Label1 = GUICtrlCreateLabel("Action:", 32, 248, 44, 20)
+$Label2 = GUICtrlCreateLabel("Delay:", 184, 248, 43, 20)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$chkStartGeneric = GUICtrlCreateCheckbox("START/STOP Generic Flow", 16, 157, 201, 16)
-$btnTest = GUICtrlCreateButton(".", 312, 723, 27, 25)
-$chkStartAfterCrash = GUICtrlCreateCheckbox("Resume After Crash", 16, 184, 185, 17)
+$chkStartGeneric = GUICtrlCreateCheckbox("START/STOP Generic Flow", 16, 149, 201, 16)
+$btnTest = GUICtrlCreateButton(".", 312, 691, 27, 25)
+$chkStartAfterCrash = GUICtrlCreateCheckbox("Resume After Crash", 16, 176, 185, 17)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
@@ -80,15 +85,32 @@ While 1
 		CloseKalturaClassroom()
 	  Case $chkStartGeneric
 		FlowRecordLoop()
-	 Case $btnTest
+	  Case $btnTest
 ;~ 		RunAppIfNotRunning()
-		testme()
+;~ 		testme()
 	  Case $ExitButton
+		Exit
+	 Case $menuExit
 		Exit
    EndSwitch
 WEnd
 
 Func testme()
+   $aArray_2D = _ParseCSV("./scenario1.csv",",","message if error happens",true)
+   ConsoleWrite($aArray_2D[0][0]& @CRLF)
+   ConsoleWrite($aArray_2D[0][1]& @CRLF)
+;~    ConsoleWrite($aArray_2D[1][2]& @CRLF)
+;~    ConsoleWrite($aArray_2D[1][1]& @CRLF)
+;~    ConsoleWrite($aArray_2D[2][2]& @CRLF)
+;~    ConsoleWrite($aArray_2D[2][1]& @CRLF)
+   ConsoleWrite(UBound($aArray_2D))
+   For $i = 1 To UBound($aArray_2D) - 1
+	  ConsoleWrite($aArray_2D[$i][1]& @CRLF)
+	  ConsoleWrite($aArray_2D[$i][2]& @CRLF)
+   Next
+
+
+   _FileWriteFromArray("./scenario2.csv", $aArray_2D, 1)
 ;~    SetObjectBkColorToDefault($cmbAction1)
 ;~    GUICtrlSetBkColor($cmbAction1, 0xFFFFFF)
 ;~    GUICtrlSetState($cmbAction1, $GUI_HIDE)
@@ -128,26 +150,15 @@ Endfunc
 Func FlowRecordLoop()
    While 1
 	  If _IsChecked($chkStartGeneric) Then
-		 CreateGenericActionsArray()
+		 StartGenericFlow()
 	  Else
 		 ExitLoop
 	  EndIf
    WEnd
 EndFunc
 
-Func CreateGenericActionsArray()
-   Global $arrActions[$iMax][2] = [ [GUICtrlRead($cmbAction1), GUICtrlRead($txtActionDelay1)], _
-									[GUICtrlRead($cmbAction2), GUICtrlRead($txtActionDelay2)], _
-									[GUICtrlRead($cmbAction3), GUICtrlRead($txtActionDelay3)], _
-									[GUICtrlRead($cmbAction4), GUICtrlRead($txtActionDelay4)], _
-									[GUICtrlRead($cmbAction5), GUICtrlRead($txtActionDelay5)], _
-									[GUICtrlRead($cmbAction6), GUICtrlRead($txtActionDelay6)], _
-									[GUICtrlRead($cmbAction7), GUICtrlRead($txtActionDelay7)], _
-									[GUICtrlRead($cmbAction8), GUICtrlRead($txtActionDelay8)], _
-									[GUICtrlRead($cmbAction9), GUICtrlRead($txtActionDelay9)], _
-									[GUICtrlRead($cmbAction10), GUICtrlRead($txtActionDelay10)], _
-									[GUICtrlRead($cmbAction11), GUICtrlRead($txtActionDelay11)] _
-								  ]
+Func StartGenericFlow()
+   CreateGenericActionsArray()
    WriteToLog("Going to Start the flow")
    For $i = 0 to UBound($arrActions) - 1
 	  If $arrActions[$i][0] <> "Select Action" Then
@@ -168,6 +179,21 @@ Func CreateGenericActionsArray()
 	  Eval(SetObjectBkColorToDefault(Execute($txtBoxNameStr)))
    Next
    WriteToLog("Flow Cycle ENDED")
+EndFunc
+
+Func CreateGenericActionsArray()
+   Global $arrActions[$iMax][2] = [ [GUICtrlRead($cmbAction1), GUICtrlRead($txtActionDelay1)], _
+									[GUICtrlRead($cmbAction2), GUICtrlRead($txtActionDelay2)], _
+									[GUICtrlRead($cmbAction3), GUICtrlRead($txtActionDelay3)], _
+									[GUICtrlRead($cmbAction4), GUICtrlRead($txtActionDelay4)], _
+									[GUICtrlRead($cmbAction5), GUICtrlRead($txtActionDelay5)], _
+									[GUICtrlRead($cmbAction6), GUICtrlRead($txtActionDelay6)], _
+									[GUICtrlRead($cmbAction7), GUICtrlRead($txtActionDelay7)], _
+									[GUICtrlRead($cmbAction8), GUICtrlRead($txtActionDelay8)], _
+									[GUICtrlRead($cmbAction9), GUICtrlRead($txtActionDelay9)], _
+									[GUICtrlRead($cmbAction10), GUICtrlRead($txtActionDelay10)], _
+									[GUICtrlRead($cmbAction11), GUICtrlRead($txtActionDelay11)] _
+								  ]
 EndFunc
 
 Func ClickGeneric($ClickType)
@@ -331,3 +357,41 @@ Func SetObjectBkColorToDefault($objectId)
    GUICtrlSetState($objectId, $GUI_SHOW)
 EndFunc
 
+Func _ParseCSV($f,$Dchar,$error,$skip)
+
+  Local $array[$iMax][$iMax]
+  Local $line = ""
+
+  $i = 0
+  $file = FileOpen($f,0)
+  If $file = -1 Then
+    MsgBox(0, "Error", $error)
+    Return False
+   EndIf
+
+  ;skip 1st line
+  If $skip Then $line = FileReadLine($file)
+
+  While 1
+       $i = $i + 1
+       Local $line = FileReadLine($file)
+       If @error = -1 Then ExitLoop
+       $row_array = StringSplit($line,$Dchar)
+        If $i == 1 Then $row_size = UBound($row_array)
+        If $row_size <> UBound($row_array) Then  MsgBox(0, "Error", "Row: " & $i & " has different size ")
+        $row_size = UBound($row_array)
+        $array = _arrayAdd_2d($array,$i,$row_array,$row_size)
+
+   WEnd
+  FileClose($file)
+  $array[0][0] = $i-1 ;stores number of lines
+   $array[0][1] = $row_size -1  ; stores number of data in a row (data corresponding to index 0 is the number of data in a row actually that's way the -1)
+   Return $array
+
+EndFunc
+Func _arrayAdd_2d($array,$inwhich,$row_array,$row_size)
+    For $i=1 To $row_size -1 Step 1
+        $array[$inwhich][$i] = $row_array[$i]
+  Next
+  Return $array
+EndFunc
