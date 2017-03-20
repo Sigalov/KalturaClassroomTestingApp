@@ -105,13 +105,13 @@ Func StartKalturaClassroom($isPopMsg)
    DeletePersistencyFile();Work around - remove it after fix
    $iPID = Run('C:\Program Files\Kaltura\Classroom\CaptureApp\KalturaClassroom.exe', 'C:\Program Files\Kaltura\Classroom\CaptureApp\')
    ProcessWait($KalturaKlassroomProcessName)
-   Sleep(4000)
+;~    Sleep(4000)
    ;Close the developers tools
    ;Focus on windows - click on the top
    ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 242, 39)
    WriteToLog("Classroom session was started")
    If $isPopMsg Then
-	  MsgBoxCustom("Wait...", "Please focus on the window after launching the flow")
+;~ 	  MsgBoxCustom("Wait...", "Please focus on the window after launching the flow")
    EndIf
 EndFunc
 
@@ -120,6 +120,10 @@ Func RunAppIfNotRunning()
 	  WriteToLog("CRASHED: Kaltura Klassroom Application not running")
 	  WriteToLog("Going to start Kaltura Klassroom Application")
 	  StartKalturaClassroom(False)
+	  Sleep(8000)
+	  Return True
+   Else
+	  Return False
    Endif
 Endfunc
 
@@ -127,7 +131,11 @@ Func FlowRecordLoop()
    ; Auto-Save current flow
    If _IsChecked($chkStartGeneric) Then
 	  $NOW = _NowCalc()
-	  AutoSave("./currentScenario.csv")
+	  $NOW = StringReplace($NOW, " ", "-")
+	  $NOW = StringReplace($NOW, "/", "-")
+	  $NOW = StringReplace($NOW, ":", "-")
+	  $fileName = "./" & $NOW & "_currentScen.csv"
+	  AutoSave($fileName)
    EndIf
    While 1
 	  If _IsChecked($chkStartGeneric) Then
@@ -159,7 +167,11 @@ Func StartGenericFlow()
 	  Endif
 	  ; Check if App crashed
 	  If _IsChecked($chkStartAfterCrash) Then
-		 RunAppIfNotRunning()
+		 If RunAppIfNotRunning() = True Then
+			Eval(SetObjectBkColorToDefault(Execute($comboNameStr)))
+			Eval(SetObjectBkColorToDefault(Execute($txtBoxNameStr)))
+			Return
+		 EndIf
 	  EndIf
 	  Eval(SetObjectBkColorToDefault(Execute($comboNameStr)))
 	  Eval(SetObjectBkColorToDefault(Execute($txtBoxNameStr)))
@@ -398,6 +410,8 @@ Func ExportScenario()
 EndFunc
 
 Func AutoSave($filePath)
+   ; Create an array from the form
+   CreateGenericActionsArray()
    ; Create temp array
    $exportArr = $arrActions
    ; Make sure file exists/create if not. Overwrite if needed
