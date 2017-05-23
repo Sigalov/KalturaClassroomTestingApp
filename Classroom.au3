@@ -209,6 +209,7 @@ Func ClickGeneric($ClickType)
 	  Case "Click Abort - X"
 		 ClickX()
 	  Case "Click Save"
+		 ClickCloseHintHoveringOverSaveButton()
 		 ClickSave()
 	  Case "Enter Title"
 		 ClickOnTitleField()
