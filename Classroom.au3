@@ -10,20 +10,20 @@
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
-#Region ### START Koda GUI section ### Form=C:\work\KalturaClassroomTestingApp\Form\Classroom.kxf
-$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 355, 748, -1, -1)
-$menuFile = GUICtrlCreateMenu("File")
+#Region ### START Koda GUI section ### Form=c:\work\kalturaclassroomtestingapp\form\classroom.kxf
+$Form1_1 = GUICreate("Kaltura Classroom QA Automation Testing Tool", 358, 784, -1, -1)
+$menuFile = GUICtrlCreateMenu("&File")
 $menuImport = GUICtrlCreateMenuItem("Import Scenario", $menuFile)
 $menuExport = GUICtrlCreateMenuItem("Export Scenario", $menuFile)
 $menuExit = GUICtrlCreateMenuItem("Exit", $menuFile)
 GUISetIcon(".\Form\app.ico", -1)
 GUISetBkColor(0xFFFFFF)
 $RunApp = GUICtrlCreateButton("Start Kaltura Classroom", 12, 97, 162, 40)
-$ExitButton = GUICtrlCreateButton("Exit", 16, 691, 74, 25)
+$ExitButton = GUICtrlCreateButton("Exit", 16, 723, 74, 25)
 GUICtrlSetFont(-1, 9, 800, 0, "MS Sans Serif")
 $CloseApp = GUICtrlCreateButton("Close Kaltura Classroom", 189, 97, 160, 40)
 $Pic1 = GUICtrlCreatePic(".\Form\logo.jpg", 9, 1, 333, 88)
-$Group2 = GUICtrlCreateGroup("Generic Flow", 16, 200, 321, 473)
+$Group2 = GUICtrlCreateGroup("Generic Flow", 16, 200, 305, 473)
 $cmbAction1 = GUICtrlCreateCombo("", 32, 280, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
 $cmbAction2 = GUICtrlCreateCombo("", 32, 312, 145, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
 $txtActionDelay1 = GUICtrlCreateInput("", 184, 280, 121, 24)
@@ -51,10 +51,20 @@ $Label1 = GUICtrlCreateLabel("Action:", 32, 248, 44, 20)
 $Label2 = GUICtrlCreateLabel("Delay:", 184, 248, 43, 20)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 $chkStartGeneric = GUICtrlCreateCheckbox("START/STOP Generic Flow", 16, 149, 201, 16)
-$btnTest = GUICtrlCreateButton(".", 312, 691, 27, 25)
+$btnTest = GUICtrlCreateButton(".", 296, 723, 27, 25)
 $chkStartAfterCrash = GUICtrlCreateCheckbox("Resume After Crash", 16, 176, 185, 17)
+$txtFrameTitle = GUICtrlCreateInput("", 112, 688, 121, 24)
+$Label3 = GUICtrlCreateLabel("Frame Title:", 16, 688, 87, 20)
+GUICtrlSetFont(-1, 8, 800, 0, "MS Sans Serif")
+$btnUpdateFrameTitle = GUICtrlCreateButton("Update", 240, 688, 83, 25)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
+
+Global $iPID = ""
+Global $iMax=11
+Global $arrActions[$iMax][2]
+Global $mainWindowName = "Classroom Capture - "
+Global $KalturaKlassroomProcessName = "KalturaClassroom.exe"
 
 ;Create actions
 GUICtrlSetData($cmbAction1, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
@@ -69,11 +79,9 @@ GUICtrlSetData($cmbAction9, "Select Action|Click Record|Click Pause|Click Stop|C
 GUICtrlSetData($cmbAction10, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
 GUICtrlSetData($cmbAction11, "Select Action|Click Record|Click Pause|Click Stop|Click Abort - X|Click Save|Enter Title|Enter Username|Enter Description|Enter Tags|Click Cancel|Click Yes|Click No", "Select Action")
 
-Global $iPID = ""
-Global $iMax=11
-Global $arrActions[$iMax][2]
-Global $mainWindowName = "Classroom Capture - "
-Global $KalturaKlassroomProcessName = "KalturaClassroom.exe"
+; Set Frame Title name
+GUICtrlSetData($txtFrameTitle, $mainWindowName)
+
 
 Opt("SendKeyDelay", 1)
 While 1
@@ -88,10 +96,11 @@ While 1
 	  Case $chkStartGeneric
 		 FlowRecordLoop()
 	  Case $btnTest
-;~ 		RunAppIfNotRunning()
 ;~ 		testme()
 	  Case $ExitButton
 		Exit
+	  Case $btnUpdateFrameTitle
+		 UpdateFrameTitle()
 	  Case $menuExit
 		Exit
 	  Case $menuExport
@@ -105,14 +114,9 @@ Func StartKalturaClassroom($isPopMsg)
    DeletePersistencyFile();Work around - remove it after fix
    $iPID = Run('C:\Program Files\Kaltura\Classroom\CaptureApp\KalturaClassroom.exe', 'C:\Program Files\Kaltura\Classroom\CaptureApp\')
    ProcessWait($KalturaKlassroomProcessName)
-;~    Sleep(4000)
-   ;Close the developers tools
    ;Focus on windows - click on the top
    ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 242, 39)
    WriteToLog("Classroom session was started")
-   If $isPopMsg Then
-;~ 	  MsgBoxCustom("Wait...", "Please focus on the window after launching the flow")
-   EndIf
 EndFunc
 
 Func RunAppIfNotRunning()
@@ -291,6 +295,12 @@ Func ClickNo()
    WriteToLog("Clicked on No")
 EndFunc
 
+Func ClickCloseHintHoveringOverSaveButton()
+   ControlClick($mainWindowName, "Chrome Legacy Window", "", "left", 1, 1005, 125)
+   Sleep(1500)
+   WriteToLog("Clicked 'X' - Closed hint hovering over save button (click if exist and if not)")
+EndFunc
+
 Func SetFileName($prefix)
    $NOW = _NowCalc()
    $logname = $prefix & "-" & $NOW
@@ -353,6 +363,10 @@ Func SetObjectBkColorToDefault($objectId)
    GUICtrlSetBkColor($objectId, 0xFFFFFF)
    GUICtrlSetState($objectId, $GUI_HIDE)
    GUICtrlSetState($objectId, $GUI_SHOW)
+EndFunc
+
+Func UpdateFrameTitle()
+   Global $mainWindowName = GUICtrlRead($txtFrameTitle)
 EndFunc
 
 Func ImportScenario()
